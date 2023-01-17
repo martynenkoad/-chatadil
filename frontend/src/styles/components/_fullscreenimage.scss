@@ -1,0 +1,31 @@
+.fullscreen-image-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4rem;
+
+    div {
+        background-color: $primary;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        span:hover {
+            cursor: pointer;
+        }
+    }
+
+    img {
+        margin-top: 7rem;
+    }
+}

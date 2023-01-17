@@ -1,0 +1,58 @@
+@mixin form {
+    padding: 2rem;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    img {
+        transition: all .2s ease;
+        width: 20rem;
+    }
+
+    .right-side {
+        padding: 20px;
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            h1 {
+                border-right: 2px solid $input;
+                font-size: 3rem;
+                padding: 0 10px 0 0;
+            }
+        
+            p {
+                padding: 10px;
+                padding-top: 26px;
+                font-weight: 100;
+                font-size: 1.3rem;
+                opacity: 0.8;
+            }
+        }
+        p {
+            font-size: 0.8rem;
+            font-weight: 300;
+            line-height: 1.2rem;
+            opacity: 0.6;
+            margin-bottom: 20px;
+            max-width: 500px;
+        }
+        
+        .password-section {
+            position: relative;
+            margin-bottom: 20px;
+            span {
+                position: absolute;
+                right: 5px;
+                bottom: 3.5px;
+                &:hover { cursor: pointer; }
+            }
+        }
+    }
+}
+
+.form {
+    @include form;
+}

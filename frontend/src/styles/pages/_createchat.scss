@@ -1,0 +1,173 @@
+@mixin create {
+    overflow-y: scroll;
+    padding: 5rem 5vw 1rem;
+    position: fixed;
+    height: 100%;
+    min-height: 100vh;
+    left: 14rem;
+    // position: relative;
+
+    h2 { margin-bottom: 20px; }
+
+    .room {
+        position: relative;
+        color: #fff;
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        justify-content: space-between;
+        width: 60vw;
+        div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .text {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            .username {
+                margin-bottom: 4px;
+                &::before {
+                    content: "@";
+                }
+            }
+            .email {
+                opacity: 0.5;
+            }
+        }
+        img {
+            width: 4rem;
+            height: 4rem;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .preload-image {
+            width: 4rem;
+            height: 4rem;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+        
+        &:hover {
+            cursor: pointer;
+        }
+
+        .hoverd-user-info {
+            position: absolute;
+            top: 0;
+            left: 4rem;
+            display: flex;
+            flex-direction: column;
+            background-color: $secondary;
+            padding: 2rem 4rem;
+            z-index: 1;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    } 
+}
+
+.add-chat {
+    display: flex;
+    background-color: $chat-bg;
+    .add-chat-actions {
+        height: 100vh;
+        background-color: $primary;
+        display: flex;
+        flex-direction: column;
+        padding: 5rem 0 1rem 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.264);
+        h2 { 
+            padding-left: 1rem; 
+            margin: 14px 0;
+        }
+        div {
+            color: $light-green;
+            display: flex;
+            align-items: center;
+            padding: 10px 3rem 10px 1rem;
+            &:hover {
+                cursor: pointer;
+                background-color: $secondary;
+            }
+            span { margin-right: 4px; }
+        }
+    }
+
+    .create-chat {
+        @include create;
+    }
+
+    .create-group-chat {
+        @include create;
+
+        .preview-image {
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .group-info {
+            display: flex;
+            
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .image-upload-section {
+                    width: 6rem;
+                    height: 6rem;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }  
+                }
+                label > .image-upload {
+                    position: absolute;
+                    font-size: 6rem;
+                    top: 7.8rem;
+                    left: 5.2rem;
+                }
+            }
+
+            .inputs {
+                padding: 2rem;
+                width: 40vw;
+
+                .input-section { width: 100%; }
+
+                label { 
+                    padding: 4px;
+                    justify-self: flex-start;
+                }
+                
+                input, textarea {
+                    @include basic-input;
+                    outline: 0;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    border-radius: 10px;
+                }  
+                textarea {
+                    resize: none;
+                    height: 5rem; 
+                }
+            }
+
+            .input-section {
+                padding: 1px;
+                display: flex;
+                justify-content: flex-start;
+            }
+        }
+    }
+    
+}

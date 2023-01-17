@@ -1,0 +1,65 @@
+.profile-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+}
+
+.profile {
+    background-color: rgb(229, 229, 229);
+    border-radius: 20px;
+    position: absolute;
+    z-index: 3;
+    width: 70vw;
+    max-width: 600px; 
+    height: 70vh;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $primary;
+    .user-info {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        border: 1px solid $primary;
+        img {
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .preload-image {
+            object-fit: contain;
+        }
+        .username {
+            padding: 20px;
+            &::before {
+                content: "@";
+            }
+        }
+        p {
+            font-weight: 500;
+            margin-bottom: 4px;
+            span {
+                font-weight: 300;
+            }
+        }
+    }
+    
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        font-size: 1.6rem;
+        &:hover { cursor: pointer; }
+    }
+}

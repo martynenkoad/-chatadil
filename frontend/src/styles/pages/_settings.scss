@@ -1,0 +1,85 @@
+.settings-container  {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    width: 80vw;
+    padding: 4rem 0 0 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .settings-header {
+        display: flex;
+        width: 100vw;
+        align-items: center;
+        padding: 1.4rem 0;
+        justify-content: center;
+        position: relative;
+        margin-left: -13vw;
+
+        a {
+            position: absolute;
+            left: 2rem;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+
+    h2 {
+        padding-top: 1rem;
+        padding-bottom: 15px;
+        font-weight: 500;
+    }
+    .edit-profile-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 0;
+        input {
+            width: 40vw;
+        }
+        .upload-image-section {
+            position: relative;
+            padding: 20px;
+            margin-top: -29px;
+            img {
+                width: 13rem;
+                height: 13rem;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            label {
+                position: absolute;
+                top: 4.5rem;
+                left: 4.5rem;
+                
+                span { font-size: 6rem; }
+            }
+        }
+        button {
+            margin: 15px 0 ;
+        }
+    }
+
+    .lang, .chosen-lang {
+        padding: 6px;
+        transition: all .2s ease;
+        &:hover { cursor: pointer; }
+    }
+
+
+    .locale-select-box {
+        @include basic-input;
+        width: 40vw;
+        outline: 0;
+    }
+
+}

@@ -1,0 +1,72 @@
+@mixin chat-comp {
+    background-color: $primary;
+    width: 30vw;
+    transition: all .2s ease;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 1rem ;
+    border-bottom: 1px solid #8e8f9146;
+}
+
+.sidebar {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    color: $sidebar-text;
+    width: 30vw;
+    min-height: 100vh;
+    height: 100%;
+    position: fixed;
+    background-color: $primary;
+    padding: 1rem 0;
+    padding-bottom: 5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    h3, .unread-chat {
+        color: #fff;
+    }
+    h3 { padding: 10px 1rem; }
+    .selected-chat {
+        @include chat-comp;
+        border-left: 6px solid $light-green;
+    }
+    .chat {
+        @include chat-comp;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    
+    .remove-user {
+        cursor: pointer;
+        color: $light-green;
+    }
+
+    .add-chat-section {
+        position: fixed;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 29.9vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: $primary;
+        padding: 1.4rem 0;
+        h5 {
+            width: 25vw;
+            font-size: 11px;
+            font-weight: 300;
+            margin-bottom: 14px;
+            padding: 0 0 10px 0;
+            border-bottom: 1px solid $sidebar-text;
+        }
+    }
+}

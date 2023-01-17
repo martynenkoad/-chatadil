@@ -1,0 +1,32 @@
+/* Basic Variables */
+@import "./variables.scss";
+
+/* Utilities */
+@import "./utils.scss";
+
+/* Components (navbar, buttons, sidebar, search bar, add chat component) */
+@import "./components/chatinfo.scss";
+@import "./components/navbar.scss";
+@import "./components/input.scss";
+@import "./components/sidebar.scss";
+@import "./components/searchbar.scss";
+@import "./components/message.scss";
+@import "./components/form.scss";
+@import "./components/buttons.scss";
+@import "./components/loading.scss";
+@import "./components/fullscreenimage.scss";
+@import "./components/imageeditor.scss";
+@import "./components/voicerecorder.scss";
+@import "./components/istyping.scss";
+@import "./components/replypreview";
+@import "./components/selectchattoforward.scss";
+
+/* Pages (home page, sign up & login pages) */
+@import "./pages/home.scss";
+@import "./pages/login.scss";
+@import "./pages/signup.scss";
+@import "./pages/profile.scss";
+@import "./pages/createchat.scss";
+@import "./pages/settings.scss";
+@import "./pages/support.scss";
+@import "./pages/editchat.scss";

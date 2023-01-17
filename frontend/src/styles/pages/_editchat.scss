@@ -1,0 +1,168 @@
+@mixin chat-img($obj-fit: cover) {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+    object-fit: $obj-fit;
+}
+
+.edit-chat {
+    padding: 4rem 0;
+    display: flex;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .edit-chat-header {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        a {
+            position: absolute;
+            left: 10px;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .chat-link {
+        padding: 0 8vw 20px 8vw;
+        display: flex;
+        align-items: center;
+        h4 {
+            color: $light-green;
+            font-size: 20px;
+        }
+        p, span {
+            margin-left: 10px;
+        }
+
+        span {
+            cursor: pointer;
+        }
+
+        p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding: 10px;
+            font-size: 10px;
+            border: 1px solid $light-grey;
+        }
+    }
+
+    .main-section {
+        display: flex;
+        padding: 3rem 10vw;
+
+        .inputs {
+            width: 38vw;
+            textarea {
+                @include basic-input;
+                resize: none;
+                height: 6rem;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+
+        .edit-chat-image {
+            position: relative;
+            margin-left: 5vw;
+            .chat-image {
+                @include chat-img;
+                filter:brightness(0.5);
+            }
+
+            .preset-chat-image {
+                @include chat-img($obj-fit: contain);
+                filter:brightness(0.5);
+            }
+
+            .image-upload {
+                position: absolute;
+                left: 35%;
+                top: 5rem;
+                font-size: 4rem;
+
+                transition: all .2s ease;
+
+                &:hover {
+                    font-size: 3rem;
+                    top: 5.5rem;
+                    left: 39%;
+                }
+            }
+        }
+    }
+
+    .edit-chat-members {
+        display: flex;
+        flex-direction: column;
+        padding: 0 8vw;
+
+        .single-member {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            color: $light-grey;
+            font-weight: 400;
+            letter-spacing: 0.1px;
+
+            .left-section {
+                display: flex;
+                align-items: center;
+
+                .ava {
+                    @include ava($width: 4rem);
+                    object-fit: cover;
+                    margin-right: 20px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+    
+                .preset-ava {
+                    @include ava($width: 4rem);
+                    object-fit: contain;
+                    margin-right: 20px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .single-member-info {
+                    display: flex;
+                    flex-direction: column;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    .username::before {
+                        content: "@";
+                    }
+                }
+            }
+
+            .delete-user-btn {
+                color: $light-green;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .follow-btn {
+        width: 10rem;
+        margin: 2rem 8vw 0;
+        text-align: center;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

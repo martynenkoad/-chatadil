@@ -1,0 +1,65 @@
+.support {
+    @include form;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0;
+
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        color: $input;
+    }
+
+    .form-container {
+        background-color: $secondary;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 40px 20px;
+        align-items: center;
+        max-width: 700px;
+        input {
+            width: 50vw;
+            max-width: 400px;
+        }
+
+        textarea {
+            @include basic-input;
+            height: 100px;
+            width: 50vw;
+            resize: none;
+            overflow-y: scroll;
+            padding: 10px;
+            max-width: 400px;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+
+    p {
+        padding: 20px;
+    }
+
+    .input-section {
+        padding:0;
+        margin: 0;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        span {
+            margin-left: 6px;
+            font-weight: 200;
+        }
+    }
+
+    a {
+        margin-top: 10px;
+        font-size: 0.8rem;
+    }
+}

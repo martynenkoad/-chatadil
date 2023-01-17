@@ -1,0 +1,41 @@
+.reply-preview-container {
+    @include preview-container;
+    justify-content: space-between;
+    .style-section {
+        color: $light-green;
+        margin-right: 20px;
+        font-size: 36px;
+    }
+
+    .reply-preview {
+        display: flex;
+        align-items: center;
+    }
+
+    .close {
+        color: $light-grey;
+        cursor: pointer;
+        margin: 5px 0;
+    }
+
+    .message-section {
+        padding: 6px;
+        max-width: 30vw;
+        .username {
+            color: $light-grey;
+            margin-bottom: 4px;
+            &::before {
+                content: "@";
+            }
+        }
+        .content {
+            font-style: italic;
+            width: 40vw;
+            height: 1.3rem;
+            white-space: pre-wrap;      
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

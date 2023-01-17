@@ -1,0 +1,119 @@
+@mixin ava($width: 3rem) {
+    width: $width;
+    height: $width;
+    border-radius: 50%;
+}
+
+@mixin chat-image {
+    height: 10rem;
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+}
+
+.open-info-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+
+    .close {
+        cursor: pointer;
+    }
+
+    h3 {
+        width: 25vw;
+        height: 2rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+.open-info-main-section {
+    display: flex;
+    flex-direction: column;
+
+    .chat-image {
+        @include chat-image;
+        object-fit: cover;
+    }
+
+    .preset-chat-image {
+        @include chat-image;
+        object-fit: contain;
+    }
+
+    .created-at {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        height: 12px;
+        padding: 0 10px;
+
+        font-size: 12px;
+    }
+
+    .description {
+        margin: 20px 2px;
+        width: 98%;
+        height: 100%;
+        padding: 16px 10px;
+        line-break: anywhere;
+        line-height: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.121);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.121);
+    }
+}
+
+.user-info {
+    display: flex;
+    padding: 10px;
+
+    .user-info-text {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+
+        .username {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 50%;
+        }
+
+        .email {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 18vw;
+        }
+    }
+
+    .ava {
+        @include ava;
+        object-fit: cover;
+    }
+
+    .preset-ava {
+        @include ava;
+        object-fit: contain;
+    }
+}
+
+.admin > h4 { padding: 0 10px; }
+.members > h4 { padding: 0 10px; }
+.description > h4 { padding: 0 0 10px 0; }
+
+.members { margin: 10px 0; }
+
+.leave-chat-btn-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    width: 100%;
+    // padding-left: 20px;
+    
+    span {
+        width: 20vw;
+    }
+}
+

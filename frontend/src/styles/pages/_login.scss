@@ -1,0 +1,26 @@
+.login {
+    @include form;
+    .down-text {
+        padding: 10px;
+        p {
+            margin: 0 -10px;
+            padding: 5px 0;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .login {
+        img {
+            width: 14rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .login {
+        img {
+            width: 10rem;
+        }
+    }
+}

@@ -1,0 +1,102 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    .home-section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10rem 2rem 6rem 2rem;
+
+        img {
+            width: 20vw;
+            min-width: 200px;
+            margin-left: 30px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        p {
+            max-width: 500px;
+            line-height: 20px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+
+            &:last-of-type {
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+    .team-container {
+        background-color: $secondary;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .team {
+        overflow-x: scroll;
+        
+        padding: 1rem 4rem;
+        
+        margin-top: 20px;
+        display: flex;
+        font-size: 10px;
+        justify-content: flex-start;
+        div {
+            display: flex;
+
+            flex-direction: column;
+            align-items: center;
+            letter-spacing: 0.15px;
+            margin: 0 auto;
+            margin-right: 10px;
+
+            img {
+                width: 14rem;
+                height: 14rem;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            h4 { 
+                font-weight: 400; 
+                margin-top: 10px;
+            }
+            p {
+                margin-top: 5px;
+                text-align: center;
+                font-weight: 200;
+                max-width: 60px;
+                opacity: 0.8;
+            }
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .team-header {
+        padding: 1rem 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+            font-size: 10px;
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .footer {
+        padding: 4rem 4rem 2rem 2rem;
+        font-size: 10px;
+    }
+}

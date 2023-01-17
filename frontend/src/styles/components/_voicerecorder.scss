@@ -1,0 +1,18 @@
+.mic-working {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2px 0 2px 20px;
+    border-radius: 20px;
+
+    .send {
+        border-radius: 50%;
+        padding: 2px;
+    }
+
+    cursor: pointer;
+    background-color: $input;
+}

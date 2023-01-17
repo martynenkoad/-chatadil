@@ -1,0 +1,28 @@
+.searchbar {
+    position: relative; 
+    margin: 10px 0;
+    padding: 0 1rem;
+    input {
+        color: $sidebar-text;
+        background-color: $searchbar;
+        width: 100%;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        border: 1px solid #8e8f9122;
+        font-weight: 500;
+        transition: all .2s ease;
+        &:focus {
+            background-color: #4a4a50;
+        }
+    }
+    .sym {
+        color: $light-green;
+        position: absolute;
+        right: 20px;
+        top: 4px;
+        font-size: 21px;
+        cursor: pointer;
+    }
+
+    
+}

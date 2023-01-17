@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    background-color: $primary;
+    overflow-x: hidden;
+}
+
+a {
+    color: $light-green;
+    text-decoration: none;
+}
+
+input, textarea {
+    outline: none;
+    border: none;
+}
+
+button:hover, label:hover {
+    cursor: pointer;
+}
+
+.follow-btn {
+    background-color: $dark-green;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    transition: background-color .2s ease; 
+    border: 1px solid rgba(255, 255, 255, 0.549);
+    &:hover {
+        background-color: $dark-green-hover;
+    }
+}

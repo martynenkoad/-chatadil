@@ -1,0 +1,74 @@
+.image-editor {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: $searchbar;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+
+    .canvas {
+        max-width: 300px;
+        max-height: 300px;
+    }
+    
+    .image-editor-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100vw;
+        background-color: $primary;
+        position: absolute;
+        top: 4rem;
+        padding: 1rem 2rem;
+
+        .close {
+            cursor: pointer;
+        }
+    }
+
+    .image-editor-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: $primary;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        padding: 1rem 2rem;
+
+        .tool {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+            cursor: pointer;
+            span {
+                background-color: #252529;
+                width: 4rem;
+                height: 4rem;
+                line-height: 4rem;
+                padding-left: 1.2rem;
+                border: 1px solid rgba(255, 255, 255, 0.107);
+                border-radius: 50%;
+                transition: all .2s ease;
+
+                &:hover {
+                    background-color: #37373c;
+                }
+            }
+            label {
+                font-size: 13px;
+                margin: 6px 0;
+            }
+        }
+    }
+
+    .toolbar {
+        padding: 20px;
+    }
+}

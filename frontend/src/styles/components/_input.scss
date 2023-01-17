@@ -1,0 +1,32 @@
+@mixin basic-input {
+    background-color: $input;
+    color: white;
+    border: 1px solid #8a8a8e;
+    padding: 6px;
+    width: 100%;
+    &::placeholder { // Chrome, Firefox, Opera, Safari 10.1+ 
+        color: $light-grey;
+        opacity: 1; // Firefox 
+      }
+      
+    &:-ms-input-placeholder { // Internet Explorer 10-11 
+        color: $light-grey;
+    }
+      
+    &::-ms-input-placeholder { // Microsoft Edge 
+        color: $light-grey;
+    }
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    label, small {
+        font-size: 0.7rem;
+        padding: 10px 0;
+        opacity: 0.5;
+    }
+    input {
+        @include basic-input;
+    }
+}
