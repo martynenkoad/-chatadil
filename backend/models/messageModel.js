@@ -40,10 +40,6 @@ const messageSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Message"
     },
-    // forwardedToChats: [{
-    //     type: mongoose.Types.ObjectId,
-    //     ref: "Chat"
-    // }], // OR
     forwardedMessage: {
         type: mongoose.Types.ObjectId,
         ref: "Message"

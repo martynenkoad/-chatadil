@@ -23,7 +23,6 @@ export const getMessages = createAsyncThunk("message/getMessages", async ({ sock
 
 export const sendMessage = createAsyncThunk("message/sendMessage", async ({ socket, chat, fd }, { rejectWithValue }) => {
     try { 
-        // console.log(`messageSlice > formdata: ${fd}`)
         return await messageService.sendMessage(socket, chat, fd)
     } catch (error) {
         const message = error.message || error.toString()

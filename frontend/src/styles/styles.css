@@ -2154,4 +2154,66 @@ button:hover, label:hover {
 }
 .edit-chat .follow-btn:hover {
   cursor: pointer;
+}
+
+.forgot-password-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.forgot-password-page h3 {
+  font-size: 26px;
+  padding: 10px;
+}
+.forgot-password-page input {
+  background-color: #6d6d71;
+  color: white;
+  border: 1px solid #8a8a8e;
+  padding: 6px;
+  width: 100%;
+  width: 40vw;
+  margin: 10px;
+  max-width: 400px;
+}
+.forgot-password-page input::-moz-placeholder {
+  color: #9b9b9e;
+  opacity: 1;
+}
+.forgot-password-page input:-ms-input-placeholder {
+  color: #9b9b9e;
+  opacity: 1;
+}
+.forgot-password-page input::placeholder {
+  color: #9b9b9e;
+  opacity: 1;
+}
+.forgot-password-page input:-ms-input-placeholder {
+  color: #9b9b9e;
+}
+.forgot-password-page input::-ms-input-placeholder {
+  color: #9b9b9e;
+}
+.forgot-password-page button {
+  width: 10vw;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+}
+.forgot-password-page .input-section {
+  display: flex;
+  position: relative;
+}
+.forgot-password-page .input-section input {
+  margin: 0 0 10px;
+}
+.forgot-password-page .input-section span {
+  position: absolute;
+  bottom: 12.7px;
+  right: 12px;
+  cursor: pointer;
+  background-color: #6d6d71;
 }/*# sourceMappingURL=styles.css.map */

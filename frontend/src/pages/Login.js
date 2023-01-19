@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { toast } from "react-toastify"
-import { useGoogleLogin } from "@react-oauth/google"
-import { login, loginViaGoogle, reset } from "../redux/auth/authSlice"
+import { login, reset } from "../redux/auth/authSlice"
 import crocodile from "../assets/crocodile.png"
 import Loading from "../components/Loading"
 import { useTranslation } from "react-i18next"
@@ -40,14 +39,6 @@ export default function Login() {
       e.preventDefault()
       dispatch(login({ email, password }))
     }
-
-    const handleLoginSuccess = (response) => {
-      const googleAccessToken = response.access_token
-
-      dispatch(loginViaGoogle(googleAccessToken))
-    }
-
-    const logInViaGoogle = useGoogleLogin({ onSuccess: handleLoginSuccess })
 
     return (
         <form 
@@ -102,14 +93,10 @@ export default function Login() {
               className="follow-btn"
               onClick={handleSubmit}
             >{t("loginButton")}</button>
-            {/* <span className="or">or</span>
-            <button 
-              className="google-btn"
-              onClick={() => logInViaGoogle()}
-            >Sign in with Google</button> */}
+      
             <div className="down-text">
               <p>{t("loginFooter1")} <Link to="/signup">{t("loginLink1")} &rarr;</Link></p>
-              <p>{t("loginFooter2")} <Link to="/forgotten-password">{t("loginLink2")} &rarr;</Link></p>
+              <p>{t("loginFooter2")} <Link to="/forgot-password">{t("loginLink2")} &rarr;</Link></p>
             </div>
           </div>
           {isLoading ? <Loading /> : <></>}

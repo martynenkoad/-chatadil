@@ -25,15 +25,6 @@ export const signup = createAsyncThunk("user/signup", async (user, { rejectWithV
     }
 })
 
-export const signupViaGoogle = createAsyncThunk("user/signupViaGoogle", async (googleAccessToken, { rejectWithValue }) => {
-  try {
-    // console.log("authSlice > googleAccesToken:", googleAccessToken)
-    return await authService.signupViaGoogle(googleAccessToken)
-  } catch (error) {
-    const message = error.message || error.toString()
-    return rejectWithValue(message)
-  }
-})
 
 /**
  * Log in the user.
@@ -43,18 +34,8 @@ export const login = createAsyncThunk("user/login", async (user, { rejectWithVal
         return await authService.login(user)
     } catch (error) {
         const message = error.message || error.toString()
-        // console.log("authSlice error: ", message)
         return rejectWithValue(message)
     }
-})
-
-export const loginViaGoogle = createAsyncThunk("user/loginViaGoogle", async (googleAccessToken, { rejectWithValue }) => {
-  try {
-    return await authService.loginViaGoogle(googleAccessToken)
-  } catch (error) {
-    const message = error.message || error.toString()
-    return rejectWithValue(message)
-  }
 })
 
 export const getUsers = createAsyncThunk("user/getUsers", async (none, { rejectWithValue }) => {
@@ -68,7 +49,6 @@ export const getUsers = createAsyncThunk("user/getUsers", async (none, { rejectW
 
 export const editProfile = createAsyncThunk("user/editProfile", async ({ firstName, lastName, username, profileImage }, { rejectWithValue }) => {
   try {
-    // console.log("authSlice: ", firstName, lastName, username, profileImage)
     return await authService.editProfile({ firstName, lastName, username, profileImage })
   } catch (error) {
     const message = error.message || error.toString()
@@ -85,9 +65,9 @@ export const forgotPassword = createAsyncThunk("user/forgotPassword", async (ite
   }
 })
 
-export const resetPassword = createAsyncThunk("user/resetPassword", async (password, { rejectWithValue }) => {
+export const resetPassword = createAsyncThunk("user/resetPassword", async ({ token, password }, { rejectWithValue }) => {
   try {
-    return await authService.resetPassword(password)
+    return await authService.resetPassword(token, password)
   } catch (error) {
     const message = error.message || error.toString()
     return rejectWithValue(message)
@@ -120,127 +100,75 @@ export const logout = createAsyncThunk("user/logout", async () => {
 })
 
 export const authSlice = createSlice({
-    name: "auth", // name of the slice;
+    name: "auth", 
     initialState, 
     reducers: {
-        // Reset all changes (except "user" changes);
         reset: (state) => {
             state.isLoading = false
             state.isError = false
             state.isSuccess = false
             state.message = ""
-        },
-        addNotifications: (state, action) => {},
-        resetNotifications: (state, action) => {}
+        }
     },
     extraReducers: (builder) => {
         builder 
-          // case "SIGNUP_PENDING"
           .addCase(signup.pending, (state) => {
             state.isLoading = true
           })
-          // case "SIGNUP_FULFILLED"
           .addCase(signup.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
             state.user = action.payload
           })
-          // case "SIGNUP_REJECTED"
           .addCase(signup.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
             state.user = null
           })
-          // case "SIGNUP_VIA_GOOGLE_PENDING"
-          .addCase(signupViaGoogle.pending, (state) => {
-            state.isLoading = true
-          })
-          // case "SIGNUP_VIA_GOOGLE_FULFILLED"
-          .addCase(signupViaGoogle.fulfilled, (state, action) => {
-            state.isError = false
-            state.isLoading = false
-            state.isSuccess = true
-            state.user = action.payload
-          })
-          // case "SIGNUP_VIA_GOOGLE_REJECTED"
-          .addCase(signupViaGoogle.rejected, (state, action) => {
-            state.isSuccess = false
-            state.isLoading = false
-            state.isError = true
-            state.message = action.payload
-            state.user = null
-          })
-          // case "LOGIN_PENDING"
+          
           .addCase(login.pending, (state) => {
             state.isLoading = true
           })
-          // case "LOGIN_FULFILLED"
           .addCase(login.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
             state.user = action.payload
           })
-          // case "LOGIN_REJECTED"
           .addCase(login.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
             state.user = null
           })
-          // case "LOGIN_VIA_GOOGLE_PENDING"
-          .addCase(loginViaGoogle.pending, (state) => {
-            state.isLoading = true
-          })
-          // case "LOGIN_VIA_GOOGLE_FULFILLED"
-          .addCase(loginViaGoogle.fulfilled, (state, action) => {
-            state.isError = false
-            state.isLoading = false
-            state.isSuccess = true
-            state.user = action.payload
-          })
-          // case "LOGIN_VIA_GOOGLE_REJECTED"
-          .addCase(loginViaGoogle.rejected, (state, action) => {
-            state.isSuccess = false
-            state.isLoading = false
-            state.isError = true
-            state.message = action.payload
-            state.user = null
-          })
-          // case "LOGOUT"
+          
           .addCase(logout.fulfilled, (state) => {
             state.user = null
           })
-          // case "GET_USERS_PENDING"
           .addCase(getUsers.pending, (state) => {
             state.isLoading = true
           })
-          // case "GET_USERS_FULFILLED"
           .addCase(getUsers.fulfilled, (state, action) => {
             state.isError = false
             state.isSuccess = true
             state.isLoading = false
             state.users = action.payload
           })
-          // case "GET_USERS_REJECTED"
           .addCase(getUsers.rejected, (state, action) => {
             state.isSuccess = false
             state.isError = true
             state.isLoading = false
             state.message = action.payload
           })
-          // case "EDIT_PROFILE_PENDING"
           .addCase(editProfile.pending, (state) => {
             state.isLoading = true
           })     
-          // case "EDIT_PROFILE_FULFILLED"     
           .addCase(editProfile.fulfilled, (state, action) => {
             state.isError = false
             state.isLoading = false
             state.isSuccess = true
             state.user = action.payload
           })
-          // case "EDIT_PROFILE_REJECTED"
           .addCase(editProfile.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
@@ -248,53 +176,45 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.user = null
           })
-          // case "FORGOT_PASSWORD_PENDING"
           .addCase(forgotPassword.pending, (state) => {
             state.isLoading = true
           })
-          // case "FORGOT_PASSWORD_FULFILLED"
           .addCase(forgotPassword.fulfilled, (state, action) => {
             state.isError = false
             state.isLoading = false
             state.isSuccess = true
             state.message = action.payload
           })
-          // case "FORGOT_PASSWORD_PENDING"
           .addCase(forgotPassword.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
             state.isError = true
             state.message = action.payload
           })
-          // case "RESET_PASSWORD_REJECTED"
           .addCase(resetPassword.pending, (state) => {
             state.isLoading = true
           })
-          // case "RESET_PASSWORD_FULFILLED"
-          .addCase(resetPassword.fulfilled, (state, action) => {
+          .addCase(resetPassword.fulfilled, (state) => {
             state.isError = false
             state.isLoading = false
             state.isSuccess = true
+            state.message = "Your password is successfully reset!"
           })
-          // case "RESET_PASSWORD_REJECTED"
           .addCase(resetPassword.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
             state.isError = true
             state.message = action.payload
           })
-          // case "SEND_QUESTION_PENDING"
           .addCase(sendQuestion.pending, (state) => {
             state.isLoading = true
           })
-          // case "SEND_QUESTION_FULFILLED"
           .addCase(sendQuestion.fulfilled, (state, action) => {
             state.isError = false
             state.isLoading = false
             state.isSuccess = true
             state.message = action.payload
           })
-          // case "SEND_QUESTION_REJECTED"
           .addCase(sendQuestion.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
@@ -305,14 +225,12 @@ export const authSlice = createSlice({
           .addCase(findUser.pending, (state) => {
             state.isLoading = true
           })
-          // case "SEND_QUESTION_FULFILLED"
           .addCase(findUser.fulfilled, (state, action) => {
             state.isError = false
             state.isLoading = false
             state.isSuccess = true
             state.foundUsers = action.payload
           })
-          // case "SEND_QUESTION_REJECTED"
           .addCase(findUser.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false

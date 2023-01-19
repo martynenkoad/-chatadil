@@ -21,7 +21,6 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
 
     const onImageLoad = (e) => {
 
-        // maybe create newWidth, newHeight etc
         let { width, height } = imgRef.current
 
         if(width > 400) {
@@ -34,7 +33,7 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
 
         const crop = centerCrop(
             makeAspectCrop({
-                unit: "%", // MAYBE PX????
+                unit: "%", 
                 width: 100
             },
               aspect,
@@ -47,8 +46,6 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
 
         setCrop(crop)
      }
-
-    //  makeAspectCrop
 
      const toggleAspect = () => {
         if(aspect){ setAspect(undefined) }
@@ -69,11 +66,6 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
     
         let img = new Image()
         img.src = output ? output : imageSrc
-
-        console.log("img.naturalHeight", img.naturalHeight)
-        console.log("img.naturalWidth", img.naturalWidth)
-        console.log("img.width:", img.width)
-        console.log("img.height:", img.height)
 
         const scaleX = img.naturalWidth / img.width
         const scaleY = img.naturalHeight / img.height
@@ -112,7 +104,6 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
     return (
         <>
         <ReactCrop
-            // style={{ maxWidth: "50%", maxHeight: "50%" }}
             crop={crop}
             aspect={aspect}
             ruleOfThirds

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { reset, forgotPassword } from "../redux/auth/authSlice"
+import { forgotPassword, reset } from "../redux/auth/authSlice"
 import { toast } from "react-toastify"
 import Loading from "../components/Loading"
 import { useTranslation } from "react-i18next"
@@ -17,7 +17,7 @@ export default function ForgotPassword() {
         if(isError) {
             toast.error(message)
         } else if (isSuccess) {
-            toast.success(message)
+            toast.success("Please check your email!")
         }
     }, [isError, isSuccess, message])
 
@@ -25,15 +25,20 @@ export default function ForgotPassword() {
         e.preventDefault()
 
         dispatch(forgotPassword({ email }))
+        dispatch(reset())
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form 
+          onSubmit={handleSubmit}
+          className="forgot-password-page"
+        >
             <h3>{t("forgotPasswordHeader")}</h3>
             <h4>{t("forgotPasswordParagraph")}</h4>
             <input 
               type="email"
               value={email}
+              placeholder={t("emailPlaceholder")}
               onChange={(e) => setEmail(e.target.value)}
             />
             <button className="follow-btn">&rarr;</button>

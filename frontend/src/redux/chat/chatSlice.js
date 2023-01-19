@@ -4,7 +4,6 @@ import chatService from "./chatService"
 const initialState = {
     chats: [],
     currentChat: "",
-    // isRead: 
     foundChatToEdit: null,
     foundChats: [],
     isSearchActive: false,
@@ -268,7 +267,6 @@ export const chatSlice = createSlice({
             state.isError = false
             state.isLoading = false
             state.isSuccess = true
-            // CHECK IF CORRECT
             state.chats = state.chats.filter(chat => chat._id === action.payload._id ? action.payload : chat)
           })
           .addCase(addMember.rejected, (state, action) => {

@@ -9,9 +9,6 @@ const {
     generatePassword,
     generateRandomUsername
 } = require("../utils/stringRoutines")
-// const passportLocalMongoose = require("passport-local-mongoose")
-// const findOrCreate = require("mongoose-findorcreate")
-// const GoogleStrategy = require("passport-google-oauth20").Strategy
 
 const Schema = mongoose.Schema
 
@@ -49,8 +46,6 @@ const userSchema = new Schema({
     }
 }, { timestamps: true })
 
-// userSchema.plugin(passportLocalMongoose)
-// userSchema.plugin(findOrCreate)
 
 userSchema.statics.signup = async function(firstName, lastName, username, email, password, profileImage) {
     const _firstName = replaceSpaces(firstName)
@@ -100,43 +95,6 @@ userSchema.statics.signup = async function(firstName, lastName, username, email,
     return user
 }
 
-userSchema.statics.signupViaGoogle = async function (googleAccessToken) {
-
-        const response = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-            headers: {
-                "Authorization": `Bearer ${googleAccessToken}`
-            }
-        })
-
-        console.log("google response: ", response)
-        
-        const firstName = response.data.given_name
-        const lastName = response.data.family_name
-        const email = response.data.email
-        const profileImage = response.data.picture
-        const password = generatePassword()
-        const username = generateRandomUsername()
-        const exists = await this.findOne({ email })
-
-        if(exists) {
-            throw Error("Such user is already logged in.")
-        }
-
-        const salt = await bcrypt.genSalt(10)
-        const hash = await bcrypt.hash(password, salt)
-
-        const user = await this.create({
-            firstName,
-            lastName,
-            username,
-            email,
-            password: hash,
-            profileImage: profileImage ? profileImage : { public_id: "", url: "" },
-            isAdmin: false
-        })
-
-        return user
-}
 
 userSchema.statics.login = async function(email, password) {
     if(!email || !password) {
@@ -158,22 +116,6 @@ userSchema.statics.login = async function(email, password) {
     return user
 }
 
-userSchema.statics.loginViaGoogle = async function(googleAccessToken) {
-    const response = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-        headers: {
-            "Authorization" : `Bearer ${googleAccessToken}`
-        }
-    })
-
-    const email = response.data.email
-
-    const user = await this.findOne({ email })
-    if(!user) {
-        throw Error("User does not exist.")
-    }
-
-    return user
-}
 
 module.exports = mongoose.model("User", userSchema)
 

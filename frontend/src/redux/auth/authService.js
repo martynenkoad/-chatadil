@@ -12,13 +12,6 @@ const signup = async (user) => {
     } catch (error) { throw Error(error) }
 } 
 
-const signupViaGoogle = async (googleAccessToken) => {
-    try {
-        const data = await makeCall("/user/signup", "POST", googleAccessToken, true, googleAccessToken) 
-        localStorage.setItem("user", JSON.stringify(data))
-        return data
-    } catch (error) { throw Error(error) }
-}
 
 /**
  * Log in the user.
@@ -30,14 +23,6 @@ const login = async (user) => {
         localStorage.setItem("user", JSON.stringify(data))
         return data
     } catch (error) { throw Error(error) }    
-} 
-
-const loginViaGoogle = async (googleAccessToken) => {
-    try {
-        const data = await makeCall("/user/login", "POST", googleAccessToken, false)
-        localStorage.setItem("user", JSON.stringify(data))
-        return data
-    } catch (error) { throw Error(error) }
 } 
 
 /**
@@ -69,9 +54,9 @@ const forgotPassword = async (item) => {
     } catch (error) { throw Error(error) }
 }
 
-const resetPassword = async (password) => {
+const resetPassword = async (token, password) => {
     try {
-        const data = await makeCall("/user/reset-password", "POST", { password })
+        const data = await makeCall("/user/reset-password", "POST", { password }, true, token)
         return data
     } catch (error) { throw Error(error) }
 }
@@ -92,9 +77,7 @@ const findUser = async (search, chatid) => {
 
 const authService = {
     signup,
-    signupViaGoogle,
     login,
-    loginViaGoogle,
     logout,
     getUsers,
     editProfile,

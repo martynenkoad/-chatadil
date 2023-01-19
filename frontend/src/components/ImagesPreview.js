@@ -25,8 +25,6 @@ export default function ImagesPreview({ previewImages, images, setImages, setPre
 
     }
 
-    console.log(`imagesPreview > images:`, images)
-
     return (
         <div className="images-preview-container">
             {

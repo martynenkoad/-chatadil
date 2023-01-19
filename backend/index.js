@@ -114,5 +114,4 @@ const runServer = () => {
     })
 }
 
-// MAYBE SERVER NOT APP
 initMongo(app, runServer)

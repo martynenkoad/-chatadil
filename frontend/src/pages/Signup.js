@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google"
-import { signup, signupViaGoogle, reset } from "../redux/auth/authSlice"
+import { signup, reset } from "../redux/auth/authSlice"
 import giraffe from "../assets/giraffe.png"
 import Loading from "../components/Loading"
 import { useTranslation } from "react-i18next"
@@ -190,19 +189,6 @@ export default function Signup() {
                 className="follow-btn"
                 onClick={handleSubmit}
               >{t("signupButton")}</button>
-              <span className="or">or</span>
-              
-              {/* <GoogleLogin 
-                onSuccess={response => {
-                  const googleAccessToken = response.credential
-
-                  // console.log("handleSignupSuccess > response:", response)
-                  dispatch(signupViaGoogle(googleAccessToken))
-                }}
-                onError={() => {
-                  // console.log('Login Failed');
-                }}
-              /> */}
 
               <p>{t("signupFooter")} <Link to="/login">{t("signupLink")} &rarr;</Link></p>
             </div>
@@ -211,4 +197,3 @@ export default function Signup() {
     )
 }
 
-        // toast.error('Please Choose The Profile Image.')

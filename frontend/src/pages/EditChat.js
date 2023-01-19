@@ -18,13 +18,11 @@ export default function EditChat() {
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.auth)
-    const { foundChatToEdit, isError, message, isLoading, isSuccess } = useSelector((state) => state.chat)
+    const { foundChatToEdit, isError, message, isLoading } = useSelector((state) => state.chat)
 
     const [chatName, setChatName] = useState(foundChatToEdit ? foundChatToEdit.chatName : "")
     const [description, setDescription] = useState(foundChatToEdit ? foundChatToEdit.description : "")
     const [members, setMembers] = useState([])
-
-    const [availableUsers, setAvailableUsers] = useState([])
 
     const [uploading, setUploading] = useState(false)
     const [chatImageWasChanged, setChatImageWasChanged] = useState(false)
@@ -40,12 +38,6 @@ export default function EditChat() {
             setDescription(data.payload.description)
             setMembers(data.payload.members)
 
-        })
-        
-        dispatch(getUsers())
-        .then(data => {
-            let newUsers = data.payload.slice(0, 6) 
-            setAvailableUsers(newUsers)
         })
     }, [])
 
@@ -124,7 +116,7 @@ export default function EditChat() {
                 toast.success("The link was successfully copied!")
               })
               .catch((error) => {
-                console.log(`Unable to copy the link due to the problem: ${error.message || error.toString()}`)
+                toast.error(`Unable to copy the link due to the problem: ${error.message || error.toString()}`)
               })
     }
 

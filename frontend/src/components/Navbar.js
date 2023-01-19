@@ -18,8 +18,10 @@ export default function Navbar() {
 
   const logOut = () => {
     dispatch(logout())
-    dispatch(reset())
-    navigate('/login')
+      .then(() => {
+        navigate('/login')
+        dispatch(reset())
+      })
   }
 
   const toggleProfile = () => { 
@@ -91,26 +93,3 @@ export default function Navbar() {
     </div>
   )
 }
-
-/**
- * <div>
-              <Link to="/">
-                Home
-              </Link>
-              {user ? <>
-                <button 
-                  className="btn-2-min"
-                  onClick={logOut}
-                >
-                  Log Out
-                </button>
-              </> : <>
-                <Link to="/signup">
-                  Sign Up
-                </Link>
-                <Link to="/login">
-                  Log in
-                </Link>
-              </>}
-            </div>
- */

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { findUser } from "../redux/auth/authSlice"
 import crocodile from "../assets/crocodile.png"
@@ -7,11 +7,11 @@ import { useTranslation } from "react-i18next"
 
 export default function UserSearchbar({ chatid, members, handleSelect }) {
 
-    const [input, setInput] = useState("")
-    // const [foundUsers, setFoundUsers] = useState([])
-    const user = JSON.parse(localStorage.getItem("user"))
     const dispatch = useDispatch()
     const { t } = useTranslation()
+    const user = JSON.parse(localStorage.getItem("user"))
+
+    const [input, setInput] = useState("")
 
     const { foundUsers } = useSelector((state) => state.auth)
 

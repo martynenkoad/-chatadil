@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import crocodile from "../assets/crocodile.png"
@@ -7,7 +7,6 @@ import { selectChat } from "../redux/message/messageSlice"
 import { useTranslation } from "react-i18next"
 
 export default function SelectChatToForward({ forwardMessage, setForwardMessage, setShowSelectChatToForward, setReplyMessage }) {
-    // console.log("select chat to forward > forwardMessage: ", forwardMessage)
     const { chats } = useSelector((state) => state.chat)
     const navigate = useNavigate()
     const dispatch = useDispatch()

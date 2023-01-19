@@ -14,7 +14,6 @@ import crocodile from "../assets/crocodile.png"
 import SingleImageComponent from "./SingleImageComponent"
 import { format } from "date-fns"
 
-// new Date(message.time).toLocaleTimeString() !!!!
 
 export default function Sidebar() {
     const user = useSelector(state => state.auth)
@@ -76,11 +75,10 @@ export default function Sidebar() {
   useEffect(() => {
     if(chatid && chatid !== undefined) {
         if(chat && chat._id) {
-            return console.log("")
+            return 
         } else {
             dispatch(getChat(chatid))
             .then(data => {
-                // console.log("data:", data)
                 handleSelect(data.payload)
             })
         }
@@ -211,10 +209,6 @@ export default function Sidebar() {
             </div>
         )
     }
-
-    // chats.forEach(chat => {
-    //     console.log("chat.areMessagesRead: ", chat.areMessagesRead)
-    // })
 
     return (
         <div className="sidebar">

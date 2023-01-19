@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react"
-import Profile from "./Profile"
+import React, { useEffect } from "react"
 import crocodile from "../assets/crocodile.png"
 import { useSelector, useDispatch } from "react-redux"
-import { createChat, getChats, reset } from "../redux/chat/chatSlice"
- import { useNavigate } from "react-router-dom"
+import { createChat, getChats } from "../redux/chat/chatSlice"
+import { useNavigate } from "react-router-dom"
 
-// { isGroupChatComp }
 export default function SingleUser({ item, isGroupChatComp, rightItem }) {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
-    const { chats, isSuccess, isError, isLoading } = useSelector((state) => state.chat)
 
     const startChat = async () => {
         dispatch(getChats())

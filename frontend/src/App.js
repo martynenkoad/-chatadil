@@ -10,9 +10,11 @@ import Settings from "./pages/Settings"
 import EditChat from "./pages/EditChat"
 import Help from "./pages/Help"
 import ForgotPassword from "./pages/ForgotPassword"
+import PasswordRecovery from "./pages/PasswordRecovery"
 import i18n from "./utils/i18n"
 import LocaleContext from "./redux/localeContext"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 function App() {
  
@@ -20,22 +22,25 @@ function App() {
 
   i18n.on("languageChanged", (lang) => setLocale(i18n.language))
 
+  const { user } = useSelector((state) => state.auth)
+
   return (
     <LocaleContext.Provider value={{ locale, setLocale }}>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/chat" exact element={<Chat />} />
+            <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/chat" exact element={user ? <Chat /> : <Navigate to="/login" />} />
 
-            <Route path="/chat/:chatid" element={<Chat />} />
+            <Route path="/chat/:chatid" element={user ? <Chat /> : <Navigate to="/login" />} />
             
-            <Route path="/add-chat" element={<AddChat />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/add-chat" element={user ? <AddChat /> : <Navigate to="/login" />} />
+            <Route path="/settings" element={user ? <Settings /> : <Navigate to="/login" />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="password-recovery/:token" element={<PasswordRecovery />} />
             <Route path="/help" element={<Help />} />
-            <Route path="/edit-chat/:chatid" element={<EditChat />} />
+            <Route path="/edit-chat/:chatid" element={user ? <EditChat /> : <Navigate to="/login" />} />
           </Routes>
         </Router>
       <ToastContainer 

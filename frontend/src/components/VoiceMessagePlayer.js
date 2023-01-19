@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react"
 import { timeFunctions } from "../utils/transformTime" 
 
-// isPlaying, setIsPlaying, currentVoiceMessage, setCurrentVoiceMessage, voiceId
 export default function VoiceMessagePlayer({ audioSrc }) {
 
     const [isPlaying, setIsPlaying] = useState(false)
@@ -14,7 +13,6 @@ export default function VoiceMessagePlayer({ audioSrc }) {
         setIsPlaying(!isPlaying)
 
         if(!isPlaying) {
-            //document.getElementById(voiceId)
             audioRef.current.play()
         }
         else {

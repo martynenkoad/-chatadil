@@ -109,5 +109,8 @@
     "messagePlaceholder": "Розпочніть листування....",
 
     "forwardedFrom": "Переслано від",
-    "selectChatToForward": "Оберіть чат, щоб переслати повідомлення:"
+    "selectChatToForward": "Оберіть чат, щоб переслати повідомлення:",
+
+    "resetPassword": "Змініть Ваш пароль!",
+    "enterNewPassword": "Введіть новий пароль...."
 }

@@ -3,6 +3,7 @@ import genRandomFileName from "../utils/genRandomFileName"
 import { timeFunctions } from "../utils/transformTime" 
 import { sendVoiceMessage } from "../redux/message/messageSlice"
 import { useDispatch } from "react-redux"
+import { toast } from "react-toastify"
 
 export default function VoiceRecorder({ chatid, socket, showInput, setShowInput }) {
 
@@ -38,7 +39,9 @@ export default function VoiceRecorder({ chatid, socket, showInput, setShowInput 
                 }
             })
             setShowInput(false)
-        } catch (error) { console.log(error) }
+        } catch (error) { 
+            toast.error(error.message || error.toString())
+         }
     }
 
     const upload = async () => {
@@ -48,7 +51,6 @@ export default function VoiceRecorder({ chatid, socket, showInput, setShowInput 
             fd.append("voiceMessage", recorder.audioBlob, fileName)
 
             dispatch(sendVoiceMessage({ socket, chat: chatid, fd }))
-                .then(data => console.log(data))
         }
     }
 
@@ -64,13 +66,11 @@ export default function VoiceRecorder({ chatid, socket, showInput, setShowInput 
                 isRecording: false
             }
         })
-        // await upload()
 
         setShowInput(true)
     }
 
 
-    // WORKS WELL
     const getMediaRecorder = () => {
         if (recorder.stream) {
             setRecorder(prevRecorder => {
@@ -108,21 +108,17 @@ export default function VoiceRecorder({ chatid, socket, showInput, setShowInput 
                 })
             }
 
-            console.log("audioBlob:", recorder.audioBlob)
-
             return () => {
                 if (recorder.mediaRecorder) recorder.mediaRecorder.stream.getAudioTracks().forEach(track => track.stop())
             }
         }
     }
 
-    // WORKS WELL 
     const cancelRecord = () => {
         setRecorder(INIT_STATE)
         setShowInput(true)
     }
 
-    // WORKS WELL
     useEffect(() => {
         let interval
 
@@ -161,7 +157,6 @@ export default function VoiceRecorder({ chatid, socket, showInput, setShowInput 
         return () => clearInterval(interval)
     })
 
-    // WORKS WELL
     useEffect(() => {
         getMediaRecorder()
     }, [recorder.stream])

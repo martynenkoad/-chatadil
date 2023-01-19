@@ -109,5 +109,8 @@
     "messagePlaceholder": "Type something here....",
 
     "forwardedFrom": "Forwarded from",
-    "selectChatToForward": "Select Chat To Forward a Message:"
+    "selectChatToForward": "Select Chat To Forward a Message:",
+
+    "resetPassword": "Reset your password!",
+    "enterNewPassword": "Enter New Password...."
 }

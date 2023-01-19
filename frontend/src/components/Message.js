@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from "react"
 import { io } from "socket.io-client"
-import { sendMessages, getMessages, deleteMessage, deleteMessages, updateMessages, likeMessage, unlikeMessage } from "../redux/message/messageSlice"
+import { sendMessages, getMessages, deleteMessages, updateMessages, likeMessage, unlikeMessage } from "../redux/message/messageSlice"
 import { useSelector, useDispatch } from "react-redux"
 import sheldon from "../assets/sheldon.png"
 import defaultSettings from "../api/defaultSettings"
 import { useTranslation } from "react-i18next"
 import MessageInput from "./MessageInput"
-import { Carousel } from "react-responsive-carousel"
 import SingleImageComponent from "./SingleImageComponent"
 import Profile from "../components/Profile" 
 import VoiceMessagePlayer from "./VoiceMessagePlayer"
@@ -166,8 +165,6 @@ export default function Message() {
     handleUpdateMessages()
     handleLikeMessages()
     handleUnlikeMessages()
-    console.log(socket.listeners("message_received"))
-
   }, [messages])
   
 
