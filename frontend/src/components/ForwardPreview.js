@@ -23,7 +23,7 @@ export default function ForwardPreview({ forwardMessage, setForwardMessage }) {
                     </div>
                 </div>
             </div>
-
+ 
             <span 
               className="material-symbols-outlined close"
               onClick={() => setForwardMessage(null)}

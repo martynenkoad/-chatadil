@@ -13,7 +13,7 @@ const signup = async (user) => {
 } 
 
 
-/**
+/** 
  * Log in the user.
  * @param user 
  */

@@ -30,4 +30,4 @@ export default function Searchbar() {
             </span>
         </div>
     )
-}
+} 

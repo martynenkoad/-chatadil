@@ -252,7 +252,7 @@ export default function Message() {
           <div className="message-display"
             style={{ overflowY: "auto" }}
           >
-          {
+          { 
             (messages.length !== 0 && chat)?
             messages.map((item, i) => {
             return (

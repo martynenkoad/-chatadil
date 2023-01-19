@@ -2,7 +2,7 @@ const { default: mongoose } = require("mongoose")
 const Chat = require("../models/chatModel")
 const User = require("../models/userModel")
 const {
-    success,
+    success, 
     fail
 } = require("../utils/response")
 

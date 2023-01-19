@@ -295,4 +295,4 @@ export const chatSlice = createSlice({
 })
 
 export const { reset, searchChat, readMessages, markMessageAsUnread } = chatSlice.actions
-export default chatSlice.reducer
+export default chatSlice.reducer 

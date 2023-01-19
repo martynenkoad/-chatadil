@@ -120,4 +120,4 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
             <span onClick={getCroppedImage}>{t("crop")}</span>
         </>
     )
-}
+} 

@@ -13,7 +13,7 @@ const useAuth = require("../middleware/useAuth")
 
 const router = express.Router()
 
-// Log in the user.
+// Log in the  user.
 router.post("/login", logInUser)
 // Sign up the user.
 router.post("/signup", signUpUser)

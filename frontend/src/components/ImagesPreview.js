@@ -24,7 +24,7 @@ export default function ImagesPreview({ previewImages, images, setImages, setPre
         setImageToOpen(img)
 
     }
-
+ 
     return (
         <div className="images-preview-container">
             {

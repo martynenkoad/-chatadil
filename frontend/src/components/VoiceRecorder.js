@@ -203,4 +203,4 @@ export default function VoiceRecorder({ chatid, socket, showInput, setShowInput 
 
         </div>
     )
-}
+} 

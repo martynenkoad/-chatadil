@@ -160,7 +160,7 @@ const resetPassword = async (req, res) => {
 
         const user = await User.findByIdAndUpdate(req.user._id, {
             password: hash
-        })
+        }) 
 
         if(!user) {
             return fail(res, "Such user does not exist.", 404)

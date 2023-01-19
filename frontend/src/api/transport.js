@@ -7,7 +7,7 @@ import defaultSettings from "./defaultSettings"
  */
 const isFormData = (data) => {
     return typeof data === "object" && data instanceof FormData
-}
+} 
 
 /**
  * Call to the backend with the provided parametres.

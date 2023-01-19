@@ -4,7 +4,7 @@
  * @param name     required: the name of the user.
  * @param url      required: the url to redirect to.
  * @returns        a created email object.
- */
+ */ 
 const setPasswordRecoveryMail = (email, name, url) => {
     return {
         email,

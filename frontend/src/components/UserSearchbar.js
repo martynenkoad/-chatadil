@@ -10,7 +10,7 @@ export default function UserSearchbar({ chatid, members, handleSelect }) {
     const dispatch = useDispatch()
     const { t } = useTranslation()
     const user = JSON.parse(localStorage.getItem("user"))
-
+ 
     const [input, setInput] = useState("")
 
     const { foundUsers } = useSelector((state) => state.auth)

@@ -76,4 +76,4 @@ export default function Menu({ item, coords, socket, setReplyMessage, setContent
             }
         </div>
     )
-}
+} 

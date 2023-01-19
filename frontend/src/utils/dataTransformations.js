@@ -12,7 +12,7 @@ const convertDataUriToBlob = (dataUri) => {
 
     let blob = new Blob([arrayBuffer], { type: mimeString })
 
-    return blob
+    return blob 
 }
 
 export default convertDataUriToBlob

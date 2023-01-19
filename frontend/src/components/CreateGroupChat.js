@@ -7,7 +7,7 @@ import SingleUser from "./SingleUserComp"
 import sheldon from "../assets/sheldon.png"
 import Loading from "./Loading"
 import { useTranslation } from "react-i18next"
-
+ 
 export default function CreateGroupChat({ isChannel }) {
 
     const dispatch = useDispatch()

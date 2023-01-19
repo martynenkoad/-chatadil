@@ -58,4 +58,4 @@ export default function VoiceMessagePlayer({ audioSrc }) {
             </div>
         </div>
     )
-} 
+}  

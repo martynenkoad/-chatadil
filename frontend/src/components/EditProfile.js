@@ -125,4 +125,4 @@ export default function EditProfile() {
                 </div>
               </form>
     )
-}
+} 

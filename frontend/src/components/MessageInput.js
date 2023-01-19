@@ -246,4 +246,4 @@ export default function MessageInput({ socket, isSocketConnected, isTyping, setI
         }
         </>
     )
-}
+} 

@@ -9,4 +9,4 @@ export default function IsTyping({ username }) {
             <span className="anime">.</span>
         </div>
     )
-}
+} 

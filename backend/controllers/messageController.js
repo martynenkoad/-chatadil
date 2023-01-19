@@ -172,7 +172,7 @@ const readMessage = async (req, res) => {
         const updated = await chat.save()
 
         success(res, updated)
-
+ 
     } catch (error) {
         console.log("\n\n\n\n\nerror:", error.message)
     }

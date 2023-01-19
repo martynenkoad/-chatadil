@@ -267,7 +267,7 @@ export default function Sidebar() {
             {
                 (isLoading || messageIsLoading)
                 &&
-                <Loading />
+               <Loading />
             }
             {
                 openInfo &&

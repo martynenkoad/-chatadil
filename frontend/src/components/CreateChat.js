@@ -10,7 +10,7 @@ export default function CreateChat() {
     const { t } = useTranslation()
 
     useEffect(() => {
-        dispatch(getUsers())
+        dispatch(getUsers()) 
     }, [])
 
 

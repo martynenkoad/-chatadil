@@ -5,4 +5,4 @@ const initState = {
     setLocale: () => {}
 }
 
-export default createContext(initState)
+export default createContext(initState) 

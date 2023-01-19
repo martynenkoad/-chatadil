@@ -46,4 +46,4 @@ export default function Profile({ setShowProfile, user }) {
           </div>
         </div>
     )
-}
+} 

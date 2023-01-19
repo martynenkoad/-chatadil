@@ -12,7 +12,7 @@ export default function PasswordRecovery() {
     const { token } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { t } = useTranslation()
+    const { t } = useTranslation() 
     const { isLoading, isSuccess, isError, message } = useSelector((state) => state.auth)
     
     const [show, setShow] = useState(false)

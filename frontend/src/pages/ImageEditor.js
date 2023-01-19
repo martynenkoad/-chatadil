@@ -73,7 +73,7 @@ export default function ImageEditor({ image, setIsImageOpened, setImages, setPre
         setOutput(baseImage)
         setOpenTool("crop")
      }
-
+ 
      const saveChanges = () => {
         if(filtersAreChanged) {   
             const canvas = canvasRef.current

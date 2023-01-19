@@ -11,7 +11,7 @@ const initialState = {
     isSuccess: false,
     isLoading: false,
     message: ""
-}
+} 
 
 /**
  * Sign up the user.

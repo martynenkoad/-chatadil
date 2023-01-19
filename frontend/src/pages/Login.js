@@ -89,7 +89,7 @@ export default function Login() {
                   {!isShown ? 'visibility' : 'visibility_off'}
                 </span>
             </div>
-            <button 
+            <button  
               className="follow-btn"
               onClick={handleSubmit}
             >{t("loginButton")}</button>
