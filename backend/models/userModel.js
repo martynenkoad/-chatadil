@@ -48,15 +48,18 @@ const userSchema = new Schema({
 
 
 userSchema.statics.signup = async function(firstName, lastName, username, email, password, profileImage) {
+    if(!firstName || !lastName || !username || !email || !password) {
+        throw Error("All fields must be filled.")
+    }
+
+    if(typeof firstName !== "string" || typeof lastName !== "string" || typeof username !== "string" || typeof email !== "string") {
+        throw Error("Please fill the fields correctly.")
+    }
     const _firstName = replaceSpaces(firstName)
     const _lastName = replaceSpaces(lastName)
     const _username = replaceSpaces(username)
 
     const emailExists = await this.findOne({ email })
-
-    if(!firstName || !lastName || !username || !email || !password) {
-        throw Error("All fields must be filled.")
-    }
 
     if(!validator.isStrongPassword(password)) {
         throw Error("Please select the strong password.")

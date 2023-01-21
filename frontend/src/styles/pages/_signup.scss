@@ -17,34 +17,48 @@
             padding:0;
             margin-bottom:-10px;
             h1 { 
-                font-size: 1.6rem; 
+                font-size: 2rem; 
                 padding-bottom:0;
             }
             p { 
-                font-size: 1rem; 
-                padding-bottom: 0;
+                font-size: 1.5rem; 
+                padding-bottom: 2px;
             }
         }
         .input-section > input {
             margin:0;
         }
     }
-
+    .profile-image-label {
+        margin: -20px 0 0 0;
+    }
     .image-upload-section {
         position: relative;
         margin-bottom: 10px;
-        img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        border: 1px solid $light-grey;
+        background-color: $dropdown;
+        .preview-image {
             width: 4rem;
             height: 4rem;
             object-fit: cover;
             border-radius: 50%;
         }
+        .null-preview-image {
+            opacity: 0;
+        }
         .image-upload {
             font-size: 34px;
             position: absolute;
-            left: 14px;
-            bottom: 18px;
+            left: 13.4px;
+            bottom: 13px;
         }
+    }
+
+    label {
+        font-size: 13px;
     }
 
     p {
@@ -54,6 +68,20 @@
 
 @media (max-width: 1200px) {
     .signup {
+        .right-side {
+            .header {
+                h1 {
+                    font-size: 1.4rem;
+                }
+                p{
+                    font-size: 1rem;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+        label {
+            font-size: 11px;
+        }
         img {
             width: 12rem;
         }

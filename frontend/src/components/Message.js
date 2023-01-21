@@ -14,7 +14,7 @@ import IsTyping from "./IsTyping"
 import Menu from "./Menu"
 import detectLinks from "../utils/stringRoutines"
 import { addMember, markMessageAsUnread } from "../redux/chat/chatSlice"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import SelectChatToForward from "./SelectChatToForward"
 
 // A variable for the socket
@@ -24,6 +24,7 @@ const LIMIT_OF_MESSAGES = 50
 export default function Message() {
   
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { t } = useTranslation()
     const messageRefs = useRef([])
 
@@ -132,7 +133,14 @@ export default function Message() {
         return 
       } else {
         dispatch(getMessages({ socket, chatid, limit: LIMIT_OF_MESSAGES, page: 1 }))
+        .then(data => {
+          if(!data.payload.messages) {
+            navigate("/page404")
+          }
+        })
+        
       }
+    } else {
     }
   }, [chatid, useParams])
 

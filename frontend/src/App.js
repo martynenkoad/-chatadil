@@ -15,6 +15,7 @@ import i18n from "./utils/i18n"
 import LocaleContext from "./redux/localeContext"
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import Page404 from "./components/Page404"
 
 function App() {
  
@@ -41,6 +42,7 @@ function App() {
             <Route path="password-recovery/:token" element={<PasswordRecovery />} />
             <Route path="/help" element={<Help />} />
             <Route path="/edit-chat/:chatid" element={user ? <EditChat /> : <Navigate to="/login" />} />
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </Router>
       <ToastContainer 

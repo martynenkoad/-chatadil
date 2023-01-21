@@ -166,10 +166,16 @@ export default function Signup() {
                 </div>  
               </div>
 
+              <div className="input-section">
+              <label className="profile-image-label" htmlFor="image-upload">
+                  {t("profileImageLabel")}
+                </label>
+              </div>
               <div className="image-upload-section">
                   <img 
+                    className={previewImage ? "preview-image" : "null-preview-image"}
                     alt=""
-                    src={previewImage ? previewImage : sheldon}
+                    src={previewImage ? previewImage : null}
                   />
                   <label htmlFor="image-upload">
                     <span className="material-symbols-outlined image-upload">

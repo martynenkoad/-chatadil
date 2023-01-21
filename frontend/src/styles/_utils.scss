@@ -32,7 +32,9 @@ button:hover, label:hover {
     color: #fff;
     padding: 0.8rem 2rem;
     transition: background-color .2s ease; 
-    border: 1px solid rgba(255, 255, 255, 0.549);
+    border-radius: 3px;
+    // text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.23);
     &:hover {
         background-color: $dark-green-hover;
     }

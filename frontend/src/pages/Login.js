@@ -55,7 +55,7 @@ export default function Login() {
               <h1>Chatadil</h1>
               <p>{t("header")}</p>
             </div>
-            <p>
+            <p className="lyrics">
               {t("loginParagraph")}
             </p>
             <div className="input-section">
@@ -72,9 +72,14 @@ export default function Login() {
             </div>
             
             <div className="input-section password-section">
-              <label
-                htmlFor="password"
-              >{t("passwordLabel")}</label>
+              <div className="password-header">
+                <label
+                  htmlFor="password"
+                >
+                  {t("passwordLabel")}
+                  <Link to="/forgot-password">{t("loginLink2")}</Link>
+                </label>
+              </div>
                 <input 
                   id="password"
                   type={isShown ? "text" : "password"}
@@ -96,7 +101,7 @@ export default function Login() {
       
             <div className="down-text">
               <p>{t("loginFooter1")} <Link to="/signup">{t("loginLink1")} &rarr;</Link></p>
-              <p>{t("loginFooter2")} <Link to="/forgot-password">{t("loginLink2")} &rarr;</Link></p>
+              
             </div>
           </div>
           {isLoading ? <Loading /> : <></>}

@@ -122,8 +122,7 @@ export const messageSlice = createSlice({
           .addCase(getMessages.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
-            state.isError = true
-            state.message = action.payload
+            state.isError = false
           })
 
           .addCase(sendMessage.pending, (state) => {

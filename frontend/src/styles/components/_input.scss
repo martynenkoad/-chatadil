@@ -2,10 +2,11 @@
     background-color: $input;
     color: white;
     border: 1px solid #8a8a8e;
-    padding: 6px;
+    border-radius: 3px;
+    padding: 6px 10px;
     width: 100%;
     &::placeholder { // Chrome, Firefox, Opera, Safari 10.1+ 
-        color: $light-grey;
+        color: #adadae;
         opacity: 1; // Firefox 
       }
       
@@ -21,6 +22,7 @@
 .input-section {
     display: flex;
     flex-direction: column;
+    padding: 3px;
     label, small {
         font-size: 0.7rem;
         padding: 10px 0;

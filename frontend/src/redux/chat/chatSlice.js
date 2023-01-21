@@ -169,8 +169,6 @@ export const chatSlice = createSlice({
           .addCase(getChat.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
-            state.isError = true
-            state.message = action.payload
             state.foundChatToEdit = null
           })
           .addCase(createChat.pending, (state) => {
@@ -256,8 +254,8 @@ export const chatSlice = createSlice({
           .addCase(readMessage.rejected, (state, action) => {
             state.isSuccess = false
             state.isLoading = false
-            state.isError = true
-            state.message = action.payload
+            state.isError = false
+            state.message = ""
           })
 
           .addCase(addMember.pending, (state) => {

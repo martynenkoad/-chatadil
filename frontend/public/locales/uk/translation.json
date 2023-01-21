@@ -26,6 +26,7 @@
     "usernameLabel": "Ваш юзернейм:",
     "emailLabel": "Ваш емейл:",
     "passwordLabel": "Ваш пароль:",
+    "profileImageLabel": "Ваша світлина (необов'язково):",
     "signupButton": "Зареєструватись",
     "loginButton": "Увійти",
     "signupFooter": "Вже маєте акаунт?",

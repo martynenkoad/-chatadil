@@ -26,6 +26,7 @@
     "usernameLabel": "Your Username:",
     "emailLabel": "Your Email:",
     "passwordLabel": "Your Password:",
+    "profileImageLabel": "Your Profile Image (optional):",
     "signupButton": "Sign Up",
     "loginButton": "Log In",
     "signupFooter": "Already have an account?",
