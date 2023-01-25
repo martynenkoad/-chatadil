@@ -21,7 +21,7 @@ import SelectChatToForward from "./SelectChatToForward"
 let socket
 const LIMIT_OF_MESSAGES = 50
 
-export default function Message() {
+export default function Message({ showSidebar, setShowSidebar }) {
   
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -110,6 +110,11 @@ export default function Message() {
     }
   }, [chat, chatid, socket])
   
+  useEffect(() => {
+    if(replyMessage || forwardMessage) {
+      setShowSidebar(false)
+    }
+  }, [replyMessage, forwardMessage])
 
 
   useEffect(() => {
@@ -228,6 +233,7 @@ export default function Message() {
   }
 
   const handleOpenReply = (replyId) => {
+    setShowSidebar(false)
     if(!document.getElementById(replyId)) {
       dispatch(getMessages({ socket, chatid: chat._id, limit: LIMIT_OF_MESSAGES, page: pageOfMessages + 1 }))
         .then(data => {
@@ -256,7 +262,7 @@ export default function Message() {
   }
   
     return (
-        <div className="chat">
+        <div className={showSidebar ? "chat" : "chat-fullscreen"}>
           <div className="message-display"
             style={{ overflowY: "auto" }}
           >
@@ -360,12 +366,6 @@ export default function Message() {
                         item.wasMessageUpdated &&
                         <span className="was-message-edited">Edited</span>
                       }
-                      {/* {
-                        (item.readBy.length > 1 || !item.readBy.length) &&
-                        <span className="material-symbols-outlined">
-                          done_all
-                        </span>
-                      } */}
                     </div> 
                 </div>
               </div>

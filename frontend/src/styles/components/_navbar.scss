@@ -1,3 +1,17 @@
+@mixin dropdown($width) {
+    position: fixed;
+    right: 20px;
+    top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $dropdown;
+    z-index: 2;
+
+    width: $width;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+}
+
 .navbar {
     background-color: $secondary;
     position: fixed;
@@ -71,17 +85,8 @@
     }
 
     .dropdown {
-        position: fixed;
-        right: 20px;
-        top: 3.5rem;
-        display: flex;
-        flex-direction: column;
-        background-color: $dropdown;
-        // padding: 1.4rem 1rem 0 1rem;
-
-        width: 14rem;
-        font-size: 0.8rem;
-        letter-spacing: 0.8px;
+        @include dropdown($width: 12rem);
+        transition: all .2s ease;
         a, div {
             padding: 10px 1.5rem;
             display: flex;
@@ -114,3 +119,13 @@
     }
 }
 
+
+@media (max-width: 720px) {
+    .dropdown {
+        @include dropdown($width: 6rem);
+        a, div, p {
+            padding: 6px;
+            font-size: 10px;
+        }
+    }
+}

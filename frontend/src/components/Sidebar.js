@@ -15,7 +15,7 @@ import SingleImageComponent from "./SingleImageComponent"
 import { format } from "date-fns"
 
 
-export default function Sidebar() {
+export default function Sidebar({ showCloseSidebar, showSidebar, setShowSidebar }) {
     const user = useSelector(state => state.auth)
 
     const [isSelected, setIsSelected] = useState(null)
@@ -86,12 +86,25 @@ export default function Sidebar() {
     }
   }, [chatid, useParams])
 
-    if(!user) { return <></> }
+  if(!user) return (<></>)
+
+  if(!showSidebar) {
+    return (
+        <div className="closed-sidebar">
+            <span 
+              className="material-symbols-outlined"
+              onClick={() => setShowSidebar(true)}
+            >
+                chevron_left
+            </span>
+        </div>
+    )
+  }
 
     if(openInfo) {
         return (
-            <div className="sidebar">
-                <div className="open-info-header">
+            <div className={(showCloseSidebar || window.innerWidth <= 720) ? "sidebar-foreground open-info" : "sidebar open-info"}>
+                <div className="open-info-header header">
                     <h3>{openInfo.chatName}</h3>
                     <span 
                       className="material-symbols-outlined close"
@@ -151,7 +164,7 @@ export default function Sidebar() {
                         openInfo.members.map(member => {
                             if(member._id !== user.user._id) {
                             return (
-                                <div className="user-info">
+                                <div className={(showCloseSidebar || window.innerWidth <= 720) ? "user-info-big" : "user-info"}>
                                     <img 
                                         className={member.profileImage.url ? "ava" : "preset-ava"}
                                         src={member.profileImage.url ? member.profileImage.url : crocodile}
@@ -211,8 +224,19 @@ export default function Sidebar() {
     }
 
     return (
-        <div className="sidebar">
-            <h3>{t("sidebarHeader")}</h3>
+        <div className={(showCloseSidebar || window.innerWidth <= 720) ? "sidebar-foreground" : "sidebar"}>
+            <div className="header">
+                <h3>{t("sidebarHeader")}</h3>
+                {
+                    (showCloseSidebar || window.innerWidth <= 720) &&
+                    <span 
+                      className="close material-symbols-outlined"
+                      onClick={() => setShowSidebar(false)}
+                    >
+                        close
+                    </span>
+                }
+            </div>
             <Searchbar />
             {
                 chats && foundChats.length === 0 && user &&

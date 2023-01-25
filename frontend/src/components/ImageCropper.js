@@ -17,18 +17,23 @@ export default function ImageCropper({ output, imageSrc, setOutput, setCanvasHei
         x: 25,   
         y: 25
     })
+    const [initWidth, setInitWidth] = useState(null)
+    const [initHeight, setInitHeight] = useState(null)
     const [aspect, setAspect] = useState(1 / 1)
 
     const onImageLoad = (e) => {
 
-        let { width, height } = imgRef.current
+        let { naturalHeight: height, naturalWidth: width } = e.currentTarget
 
-        if(width > 400) {
-            width = 400
-            imgRef.current.width = 400
-        } else if (height > 400) {
-            height = 400
-            imgRef.current.height = 400
+        if(width > 600) {
+            // setInitWidth(width)
+            imgRef.current.width = 600
+            width = 600
+            
+        } else if (height > 600) {
+            // setInitHeight
+            imgRef.current.height = 600
+            height = 600
         }
 
         const crop = centerCrop(
